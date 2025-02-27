@@ -8,11 +8,13 @@ import fs from "fs";
 import path from "path";
 import userRouter from "./routes/userRouter.js";
 import gadgetRouter from "./routes/gadgetRouter.js";
-import dotenv from "dotenv";
+import { fileURLToPath } from "url";
 import createError from "http-errors";
+import dotenv from "dotenv";
 dotenv.config();
 
-const __dirname = import.meta.dirname;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const accessLogStream = fs.createWriteStream(
 	path.join(__dirname, "access.log"),
 	{ flags: "a" }
