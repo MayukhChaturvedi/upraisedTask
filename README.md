@@ -1,7 +1,7 @@
 ```markdown
 # 🕵️♂️ IMF Gadget Management API
 
-[![Deployed on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=)
+[![Deployed on Railway](https://img.shields.io/badge/Deployed%20on-Railway-purple)](https://upraisedtask-production.up.railway.app/)
 
 A secure API for managing Impossible Missions Force (IMF) gadgets with self-destruct capabilities and mission success probability calculations.
 
@@ -44,7 +44,7 @@ npm install
 
 cp .env.example .env
 
-# Configure your PostgreSQL database URL
+# Configure your PostgreSQL database URL and other necessary environment variables in the `.env` file
 
 ```
 
@@ -95,7 +95,7 @@ JWT_SECRET="your_ultra_secure_secret"
 **Create Gadget:**
 ```
 
-curl -X POST -H "Authorization: Bearer " -H "Content-Type: application/json" -d '{
+curl -X POST -H "Authorization: Bearer <token>" -H "Content-Type: application/json" -d '{
 "name": "Holographic Disguise Kit"
 }' http://localhost:3000/api/gadgets
 
@@ -162,5 +162,4 @@ Destroyed
 3. Add environment variables
 4. Deploy!
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://upraisedtask-production.up.railway.app/)
 ```
