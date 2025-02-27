@@ -1,4 +1,3 @@
-````markdown
 # 🕵️♂️ IMF Gadget Management API
 
 [![Deployed on Railway](https://img.shields.io/badge/Deployed%20on-Railway-purple)](https://upraisedtask-production.up.railway.app/)
@@ -21,7 +20,6 @@ A secure API for managing Impossible Missions Force (IMF) gadgets with self-dest
 - 🕶️ Covert operation logging
 
 ## 🚀 Quick Start
-
 ```bash
 # 1. Clone repo
 git clone https://github.com/MayukhChaturvedi/upraisedTask/
@@ -40,7 +38,7 @@ npx prisma generate
 # 5. Launch server
 npm start
 ```
-````
+
 
 ## 🔧 Environment Setup
 
@@ -129,7 +127,3 @@ enum Status {
 2. Import repository
 3. Configure environment
 4. Deploy
-
-```
-
-```
