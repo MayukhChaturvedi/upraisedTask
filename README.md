@@ -1,4 +1,4 @@
-```markdown
+````markdown
 # 🕵️♂️ IMF Gadget Management API
 
 [![Deployed on Railway](https://img.shields.io/badge/Deployed%20on-Railway-purple)](https://upraisedtask-production.up.railway.app/)
@@ -7,159 +7,129 @@ A secure API for managing Impossible Missions Force (IMF) gadgets with self-dest
 
 ## 📌 Overview
 
-Built with:
+### Built with:
 
-- Node.js
-- Express
-- PostgreSQL
-- Prisma (ORM)
+- Node.js & Express
+- PostgreSQL & Prisma ORM
 - JWT Authentication
 
-Implements mission-critical features:
+### Key Features:
 
 - 🔒 Secure authentication/authorization
 - 💣 Self-destruct sequences
 - 🎰 Mission success probability generator
 - 🕶️ Covert operation logging
 
-## 🚀 Installation
+## 🚀 Quick Start
 
-1. Clone repo:
-```
-
+```bash
+# 1. Clone repo
 git clone https://github.com/MayukhChaturvedi/upraisedTask/
 cd upraisedTask
 
-```
-
-2. Install dependencies:
-```
-
+# 2. Install dependencies
 npm install
 
-```
-
-3. Environment setup:
-```
-
+# 3. Setup environment
 cp .env.example .env
 
-# Configure your PostgreSQL database URL and other necessary environment variables in the `.env` file
-
-```
-
-4. Database setup:
-```
-
+# 4. Initialize database
 npx prisma migrate dev --name init
 npx prisma generate
 
-```
-
-5. Start server:
-```
-
+# 5. Launch server
 npm start
-
 ```
+````
 
-## 🔧 Environment Variables
+## 🔧 Environment Setup
 
-```
-
+```env
 PORT=3000
 DATABASE_URL="postgresql://user:password@localhost:5432/imf_gadgets"
 JWT_SECRET="your_ultra_secure_secret"
-
 ```
 
-## 🛠️ API Endpoints
+## 🛠️ API Reference
 
-### 🔑 Authentication
-| Method | Endpoint    | Description          |
-|--------|-------------|----------------------|
-| POST   | /users/login | Get JWT token        |
-| POST   | /users/signup| Create new agent     |
+### Authentication Endpoints
 
-### 🧰 Gadget Management
-| Method | Endpoint                      | Description                          |
-|--------|-------------------------------|--------------------------------------|
-| GET    | /api/gadgets?status=status    | List all gadgets with success odds   |
-| POST   | /api/gadgets                  | Create new gadget                    |
-| PATCH  | /api/gadgets/:id              | Update gadget details                |
-| DELETE | /api/gadgets/:id              | Decommission gadget                  |
-| POST   | /api/gadgets/:id/self-destruct| Initiate self-destruct sequence      |
+| Method | Endpoint      | Description   |
+| ------ | ------------- | ------------- |
+| POST   | /users/login  | Get JWT token |
+| POST   | /users/signup | Create agent  |
 
-## 📋 Example Requests
+### Gadget Operations
 
-**Create Gadget:**
+| Method | Endpoint                       | Description            |
+| ------ | ------------------------------ | ---------------------- |
+| GET    | /api/gadgets                   | List gadgets with odds |
+| POST   | /api/gadgets                   | Create gadget          |
+| PATCH  | /api/gadgets/:id               | Update gadget          |
+| DELETE | /api/gadgets/:id               | Decommission gadget    |
+| POST   | /api/gadgets/:id/self-destruct | Trigger self-destruct  |
+
+## 📋 Usage Examples
+
+### Create Gadget
+
+```bash
+curl -X POST \
+    -H "Authorization: Bearer <token>" \
+    -H "Content-Type: application/json" \
+    -d '{"name": "Holographic Disguise Kit"}' \
+    http://localhost:3000/api/gadgets
 ```
 
-curl -X POST -H "Authorization: Bearer <token>" -H "Content-Type: application/json" -d '{
-"name": "Holographic Disguise Kit"
-}' http://localhost:3000/api/gadgets
+### Response
 
-```
-
-**Sample Response:**
-```
-
+```json
 {
-"id": "550e8400-e29b-41d4-a716-446655440000",
-"name": "The Chimera",
-"status": "Available",
-"successProbability": 78
+	"id": "550e8400-e29b-41d4-a716-446655440000",
+	"name": "The Chimera",
+	"status": "Available",
+	"successProbability": 78
 }
-
 ```
 
-## 🔒 Authentication
-1. Get JWT token from `/users/login`
-2. Include in headers:
-```
+## 🗄️ Data Schema
 
-Authorization: Bearer
+### User Model
 
-```
-
-## 🗄️ Data Models
-
-### User
-```
-
+```prisma
 model User {
-id String @id @default(uuid())
-email String @unique
-name String
-password String
+    id       String @id @default(uuid())
+    email    String @unique
+    name     String
+    password String
 }
-
 ```
 
-### Gadget
-```
+### Gadget Model
 
+```prisma
 model Gadget {
-id String @id @default(uuid())
-name String
-status Status @default(Available)
-decommissionedAt DateTime?
+    id              String    @id @default(uuid())
+    name            String
+    status          Status    @default(Available)
+    decommissionedAt DateTime?
 }
 
 enum Status {
-Available
-Deployed
-Decommissioned
-Destroyed
+    Available
+    Deployed
+    Decommissioned
+    Destroyed
 }
-
 ```
 
-## 🚄 Deployment
+## 🚄 Deploy
 
-1. Create Railway account
+1. Sign up on Railway
 2. Import repository
-3. Add environment variables
-4. Deploy!
+3. Configure environment
+4. Deploy
+
+```
 
 ```
